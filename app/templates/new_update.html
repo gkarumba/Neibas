@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="margin-top: 100px;">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Add Update</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Write Your Update Below</h6>
+                    <p class="card-text">
+                        <form action="{% url 'new_update'%}" method='post' enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% bootstrap_form form%}
+                            <div class="form-group">
+                                <input type="submit" value="Submit" class="btn btn-outline-primary btn-sm">
+                            </div>
+                            <input type="hidden" name="next" value="{{next}}">
+                        </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{{form.media}}
+{%endblock%}
