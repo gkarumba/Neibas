@@ -85,3 +85,23 @@ class Business(models.Model):
     def find_biz(cls,term):
         result = cls.objects.filter(name__icontains=term)
         return result
+    
+class Updates(models.Model):
+    '''
+    Models for the updates
+    '''
+    title = models.CharField(max_length=55)
+    update = models.CharField(max_length=255)
+    author = models.ForeignKey(User,on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+    post_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+    
+    def save_updates(self):
+        self.save()    
+        
+    @classmethod
+    def delete_update(cls,title):
+        cls.objects.filter(title=title).delete()
