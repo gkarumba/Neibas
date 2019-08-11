@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+<br>
+<div class="text-center">
+    <a href="{%url 'new_update' %}">
+        <button class="btn btn-primary">Post Update</button>
+    </a>
+</div>
+<div class="container">
+    <div class="row">
+        {%if updates %}
+        {% for update in updates %}
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{update.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Information:</h6>
+                    <p class="card-text">{{update.update}}.</p>
+                    <a href="#" class="card-link">Author: {{update.author}}</a>
+                    <a href="#" class="card-link">Time Posted: {{update.post_date}}</a>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+        {%else%}
+        <p>No Updates</p>
+        {%endif%}
+    </div>
+</div>
+{% endblock %}
