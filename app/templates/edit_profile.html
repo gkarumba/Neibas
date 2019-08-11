@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+{{ block.super }}
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Edit Profile</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Update Your Details Below</h6>
+                    <p class="card-text">
+                        <form action="{% url 'edit'%}" method='post' enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% bootstrap_form form%}
+                            <div class="form-group">
+                                <input type="submit" value="Submit" class="btn btn-outline-primary btn-sm">
+                            </div>
+                            <input type="hidden" name="next" value="{{next}}">
+                        </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{{form.media}}
+{% endblock %}

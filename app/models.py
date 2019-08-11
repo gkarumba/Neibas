@@ -33,7 +33,8 @@ class Neighbourhood(models.Model):
     def update_occupants(cls,neiba,new_occ):
         cls.objects.filter(name=neiba).update(occupants=new_occ)
         
-    @classmethod find_neiba(cls,name):
+    @classmethod 
+    def find_neiba(cls,name):
         result = cls.objects.filter(name__icontains=name)
         return result
 
