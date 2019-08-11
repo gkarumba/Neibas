@@ -38,4 +38,23 @@ class Neighbourhood(models.Model):
         return result
 
 class Profile(models.Model):
+    '''
+    Model for user profiles
+    '''
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    profilepic = models.ImageField(upload_to='profiles/')
+    bio = models.CharField(max_length=255)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+    profile_email = models.CharField(max_length=255)
     
+    def __str__(self):
+        return self.bio
+    
+    def save_profile(self):
+        self.save()
+        
+    @classmethod
+    def delete_profile(cls,username):
+        cls.objects.filter(user=username).delete()
+        
+        
