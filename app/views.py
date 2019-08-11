@@ -37,4 +37,27 @@ def edit_profile(request):
     else:
         form = ProfileForm()
     return render(request,'edit_profile.html',{"form":form})
+  
+@login_required(login_url='/accounts/login/')
+def updates(request):
+    current_user = request.user
+    profile=Profile.objects.get(user=current_user)
+    updates = Updates.objects.filter(neighbourhood=profile.neighbourhood) 
+    return render(request, 'updates.html',{'updates':updates})
+            
+@login_required(login_url='/accounts/login/')
+def new_update(request):
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user)
+    if request.method == 'POST':
+        form = UpdatesForm(request.POTS, request.FILES)
+        if form.is_valid():
+            update = form.save(commit=False)
+            update.author = current_user
+            update.neighbourhood = profile.neighbourhood
+            update.save()
+        return redirect('updates')
+    else:
+        form = UpdatesForm()
+    return render(request,'new_update.html',{'form':form})
             

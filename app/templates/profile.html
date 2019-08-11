@@ -3,18 +3,19 @@
 {% block content %}
 {{ block.super }}
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="margin-top: 100px;">
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{profile.profilepic.url}}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">{{profile.user.username}}</h5>
-                    <p class="card-text">{{profile.bio}}</p>
-                    <p class="card-text">{{profile.profile_email}}</p>
-                    <a href="#" class="btn btn-primary">Edit Profile</a>
+                    <h5 class="card-title">Username: {{profile.user.username}}</h5>
+                    <p class="card-text">Bio: {{profile.bio}}</p>
+                    <p class="card-text">Email: {{profile.profile_email}}</p>
+                    <a href="{% url 'edit'%}" class="btn btn-primary">Edit Profile</a>
                 </div>
             </div>          
         </div>
     </div>
 </div>
+{% endblock %}
