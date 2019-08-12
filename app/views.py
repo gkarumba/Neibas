@@ -64,14 +64,15 @@ def new_update(request):
 @login_required(login_url='/accounts/login/')
 def business(request):
     current_user = request.user
-    profile = Profile.object.get(user=current_user)
+    profile = Profile.objects.get(user=current_user)
     business = Business.objects.filter(neibourhood=profile.neighbourhood)
+    print(business)
     return render(request,'biz.html',{'business':business})
 
 @login_required(login_url='/accounts/login/')
 def new_biz(request):
     current_user = request.user
-    profile = Profile.object.get(user=current_user)
+    profile = Profile.objects.get(user=current_user)
     if request.method == 'POST':
         form = BusinessForm(request.POST,request.FILES)
         if form.is_valid():
