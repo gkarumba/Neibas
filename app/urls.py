@@ -8,8 +8,10 @@ urlpatterns=[
     url(r'^profile$', views.profile, name='profile'),
     url(r'profile/edit$', views.edit_profile, name='edit'),
     url(r'update$',views.updates, name='updates'),
-    url(r'updates/new$', views.new_update, name='new_update')
-    ,
+    url(r'updates/new$', views.new_update, name='new_update'),
+    url(r'business$', views.business, name='business'),
+    url(r'business/new$', views.new_biz, name='new_biz'),
+    
 ]
 
 if settings.DEBUG:
