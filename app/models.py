@@ -65,6 +65,8 @@ class Business(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     neibourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+    bizpic = models.ImageField(upload_to='/bizpic')
+    mode = models.CharField(max_length=255)
     biz_email = models.EmailField()
     contact = models.IntegerField()
     
