@@ -61,3 +61,26 @@ def new_update(request):
         form = UpdatesForm()
     return render(request,'new_update.html',{'form':form})
             
+@login_required(login_url='/accounts/login/')
+def business(request):
+    current_user = request.user
+    profile = Profile.object.get(user=current_user)
+    business = Business.objects.filter(neibourhood=profile.neighbourhood)
+    return render(request,'biz.html',{'business':business})
+
+@login_required(login_url='/accounts/login/')
+def new_biz(request):
+    current_user = request.user
+    profile = Profile.object.get(user=current_user)
+    if request.method == 'POST':
+        form = BusinessForm(request.POST,request.FILES)
+        if form.is_valid():
+            biz = form.save(commit = False)
+            biz.user = current_user
+            biz.neighbourhood = profile.neighbourhood
+            biz.save()
+        return redirect('business')
+    else:
+        form = BusinessForm()
+        
+    return render(request,'new_biz.html',{'form':form})        
