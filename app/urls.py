@@ -11,6 +11,7 @@ urlpatterns=[
     url(r'updates/new$', views.new_update, name='new_update'),
     url(r'business$', views.business, name='business'),
     url(r'business/new$', views.new_biz, name='new_biz'),
+    url(r'amenities$', views.view_amenities, name='amen')
     
 ]
 
