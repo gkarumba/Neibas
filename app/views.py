@@ -85,3 +85,5 @@ def new_biz(request):
         form = BusinessForm()
         
     return render(request,'new_biz.html',{'form':form})        
+def view_amenities(request):
+    return render(request, 'amenities.html')
