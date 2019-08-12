@@ -50,7 +50,7 @@ def new_update(request):
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
     if request.method == 'POST':
-        form = UpdatesForm(request.POTS, request.FILES)
+        form = UpdatesForm(request.POST, request.FILES)
         if form.is_valid():
             update = form.save(commit=False)
             update.author = current_user

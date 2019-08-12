@@ -8,7 +8,7 @@ class BusinessForm(forms.ModelForm):
         
 class UpdatesForm(forms.ModelForm):
     class Meta:
-        models = Updates
+        model = Updates
         exclude = ['author','neighbourhood','post_date']
         
 class ProfileForm(forms.ModelForm):
