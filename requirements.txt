@@ -6,7 +6,7 @@ Django==1.11
 django-bootstrap3==11.0.0
 django-heroku==0.3.1
 django-registration==2.4.1
-djangorestframework==3.9.4
+djangorestframework==3.11.2
 dominate==2.3.5
 gunicorn==19.9.0
 itsdangerous==1.1.0
